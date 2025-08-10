@@ -143,7 +143,7 @@ questions:
     depends_on:
       and:
         - question: age
-          allowed_values: [Adulte, Personne Agé]
+          allowed_values: [Jeune adulte, Adulte, Personne Agé]
 
   - id: travail_secteur
     question: "Quel est son secteur d'activité ?"

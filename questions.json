@@ -383,6 +383,7 @@
           {
             "question": "age",
             "allowed_values": [
+              "Jeune adulte",
               "Adulte",
               "Personne Agé"
             ]
