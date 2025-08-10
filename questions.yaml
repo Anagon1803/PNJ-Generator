@@ -1,0 +1,185 @@
+questions:
+  - id: sexe
+    question: "Quel est le sexe ?"
+    options: [Femelle, Male]
+
+  - id: age
+    question: "Quel est l'âge du personnage ?"
+    options: [Enfant, Adolescent, Jeune adulte, Adulte, Personne Agé]
+
+
+  - id: race
+    question: "Quel est sa race ? (exemple: humain, felix, wolfen, alien, etc)"
+    ask: oui
+
+  - id: nationalite
+    question: "Quelle est sa nationalité ?"
+    ask: oui
+
+  - id: orientation
+    question: "Quelle est son orientation sexuelle ?"
+    options: [Hétéro, Homo, Bi, NOPE, Se cherche]
+
+  - id: libido
+    question: "Quel est son niveau de libido ?"
+    options: [Désert (1/7), PI pas intéressé (2/7), Pas prioritaire (3/7), c'est ok (4/7), Intéressée (5/7), Pervers (6/7), Nymphomane (7/7)]
+
+
+  # niveau de vie
+  - id: richesse
+    question: "Quel est son niveau de richesse ?"
+    options: [Sans abrit (1/7), C'est la dèche (2/7), Le SMIC (3/7), Normal (4/7), Riche (5/7), Saint Troper (6/7), Batman (7/7)]
+
+  - id: famille
+    question: "Quelle est la situation familiale ?"
+    options: [Orphelin(e), Autre, Papa seul, Maman seule, Papa/Maman, 2 papas, 2 mamans]
+
+  - id: adopter
+    question: "A-t-il été adopté ?"
+    options: [OUI, NON]
+    depends_on:
+      - question: famille
+        allowed_values: [Autre, Papa seul, Maman seule, Papa/Maman, 2 papas, 2 mamans]
+
+  - id: frere
+    question: "A-t-il un ou des frères ?"
+    options: ["0", "1", "2"]
+
+  - id: frere_connue
+    question: "Combien en connait-il ?"
+    options: ["0", "1", "2"]
+    depends_on:
+      - question: frere
+        allowed_values: ["1", "2"]
+
+  - id: soeur
+    question: "A-t-il une ou des soeurs ?"
+    options: ["0", "1", "2"]
+
+  - id: soeur_connue
+    question: "Combien en connait-il ?"
+    options: ["0", "1", "2"]
+    depends_on:
+      - question: soeur
+        allowed_values: ["1", "2"]
+
+  - id: ordre
+    question: "Quel est son ordre de naissance ?"
+    options: [Petit(e), Jumeaux, Milieux, Grand(e)]
+    depends_on:
+      or:
+        - question: frere
+          allowed_values: ["1", "2"]
+        - question: soeur
+          allowed_values: ["1", "2"]
+
+
+  # Relation
+  - id: relation_familiale
+    question: "Quel est son niveau de relation familiale ?"
+    options: [Détester (1/7), Mal aimer (2/7), Ignorer (3/7), Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+
+  - id: relation_amicale
+    question: "Quel est son niveau de relation amicale ?"
+    options: [Détester (1/7), Mal aimer (2/7), Ignorer (3/7), Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+
+  - id: relation_amoureuse
+    question: "Quel est son niveau de relation amoureuse ?"
+    options: [Détester (1/7), Mal aimer (2/7), Ignorer (3/7), Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+
+  - id: situation_amoureuse
+    question: "Quel est sa situation amoureuse (Enfant/Adolescent) ?"
+    options: [Célibataire, En couple, Autre]
+    depends_on:
+      - question: relation_amoureuse
+        allowed_values: [Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+
+
+  # Scolaire
+  - id: niveau_scolaire
+    question: "Quel est sa moyenne scolaire ?"
+    options: ["0-4", "4-8", "8-12", "12-16", "16-20"]
+
+  - id: etude_superieur
+    question: "A-t-il fait des études supérieures ?"
+    options: [OUI, NON]
+    depends_on:
+      and:
+        - question: age
+          allowed_values: [Jeune adulte, Adulte, Personne Agé]
+        - question: niveau_scolaire
+          allowed_values: ["4-8", "8-12", "12-16", "16-20"]
+
+  - id: etude
+    question: "Quel est son domaine d'étude ?"
+    ask: oui
+    depends_on:
+      - question: etude_superieur
+        allowed_values: [OUI]
+
+  - id: bourse
+    question: "A-t-il une bourse ?"
+    options: [OUI, NON]
+    depends_on:
+      and:
+        - question: etude_superieur
+          allowed_values: [OUI]
+        - question: richesse
+          allowed_values: [Sans abrit (1/7), C'est la dèche (2/7), Le SMIC (3/7), Normal (4/7)]
+
+
+  # Travail
+  - id: travail
+    question: "A-t-il un travail ?"
+    options: [OUI, NON]
+    depends_on:
+      and:
+        - question: age
+          allowed_values: [Adulte, Personne Agé]
+
+  - id: travail_secteur
+    question: "Quel est son secteur d'activité ?"
+    options: [Activités juridiques et comptables, Agriculture et élevage, Architecture & études et normes, Artisanat d'art & audiovisuel et spectacle, Automobile, Bâtiment et travaux publics (BTP), Commerce et distribution, Communication et marketing, Culture et patrimoine, Édition, Énergie, Enseignement et formation, Environnement, Finance & banque et assurance, Gestion administrative et ressources humaines, Hôtellerie et restauration, Immobilier, Industrie - Alimentaire, Industrie - Bois, Industrie - Chimie, Industrie - Électronique, Industrie - Métallurgie, Industrie - Papier et imprimerie, Industrie - Textile et mode, Industries, Informatique et télécommunication, Logistique et transport, Maintenance & entretien et nettoyage, Recherche, Santé, Service à la personne, Service public & défense et sécurité, Social, Sport & animation et loisir, Tourisme]
+    depends_on:
+      - question: travail
+        allowed_values: [OUI]
+
+  - id: relation_collègues
+    question: "Quel est son niveau de relation avec ces collègues ?"
+    options: [Détester (1/7), Mal aimer (2/7), Ignorer (3/7), Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+    depends_on:
+      - question: travail
+        allowed_values: [OUI]
+
+  - id: relation_boss
+    question: "Quel est son niveau de relation avec son boss ?"
+    options: [Détester (1/7), Mal aimer (2/7), Ignorer (3/7), Neutre (4/7), Apprécier (5/7), Aimer (6/7), Adorer (7/7)]
+    depends_on:
+      - question: travail
+        allowed_values: [OUI]
+
+  - id: situation_amoureuse_2
+    question: "Quel est sa situation amoureuse ?"
+    options: [Célibataire, En couple, Marié(e), Divorcé(e), Veuf(ve), Autre]
+    depends_on:
+      - question: age
+        allowed_values: [Jeune adulte, Adulte, Personne Agé]
+
+
+  # Loisirs
+  - id: loisir
+    question: "Quel est son loisir ?"
+    ask: oui
+
+  - id: santé
+    question: "Quel est son état de santé ?"
+    options: [Jamais malade, En bonne santé, Allergie, Maladie physique ou/et mental, Handicapé(e), Autre]
+
+  - id: santé_note
+    question: "Plus de précision ?"
+    ask: oui
+
+  # Fin
+  - id: nom
+    question: "Quel est le nom du personnage ?"
+    ask: oui
