@@ -68,7 +68,7 @@
     },
     {
       "id": "famille",
-      "question": "Quelle est la situation familiale ?",
+      "question": "Quelle est sa situation familiale ?",
       "options": [
         "Orphelin(e)",
         "Autre",
@@ -282,19 +282,6 @@
       }
     },
     {
-      "id": "etude",
-      "question": "Quel est son domaine d'étude ?",
-      "ask": "oui",
-      "depends_on": [
-        {
-          "question": "etude_superieur",
-          "allowed_values": [
-            "OUI"
-          ]
-        }
-      ]
-    },
-    {
       "id": "bourse",
       "question": "A-t-il une bourse ?",
       "options": [
@@ -320,6 +307,69 @@
           }
         ]
       }
+    },
+    {
+      "id": "etude_secteur",
+      "question": "Quel est son domaine d'étude ?",
+      "options": [
+        "Activités juridiques et comptables",
+        "Agriculture et élevage",
+        "Architecture & études et normes",
+        "Artisanat d'art & audiovisuel et spectacle",
+        "Automobile",
+        "Bâtiment et travaux publics (BTP)",
+        "Commerce et distribution",
+        "Communication et marketing",
+        "Culture et patrimoine",
+        "Édition",
+        "Énergie",
+        "Enseignement et formation",
+        "Environnement",
+        "Finance & banque et assurance",
+        "Gestion administrative et ressources humaines",
+        "Hôtellerie et restauration",
+        "Immobilier",
+        "Industrie - Alimentaire",
+        "Industrie - Bois",
+        "Industrie - Chimie",
+        "Industrie - Électronique",
+        "Industrie - Métallurgie",
+        "Industrie - Papier et imprimerie",
+        "Industrie - Textile et mode",
+        "Industries",
+        "Informatique et télécommunication",
+        "Logistique et transport",
+        "Maintenance & entretien et nettoyage",
+        "Recherche",
+        "Santé",
+        "Service à la personne",
+        "Service public & défense et sécurité",
+        "Social",
+        "Sport & animation et loisir",
+        "Tourisme",
+        "Autre"
+      ],
+      "depends_on": [
+        {
+          "question": "etude_superieur",
+          "allowed_values": [
+            "OUI"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etude_else",
+      "question": "Quel est son domaine d'étude ?",
+      "ask": "oui",
+      "depends_on": [
+        {
+          "question": "etude_secteur",
+          "allowed_values": [
+            "Autre"
+          ]
+        }
+      ]
     },
     {
       "id": "travail",
@@ -378,13 +428,27 @@
         "Service public & défense et sécurité",
         "Social",
         "Sport & animation et loisir",
-        "Tourisme"
+        "Tourisme",
+        "Autre"
       ],
       "depends_on": [
         {
           "question": "travail",
           "allowed_values": [
             "OUI"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "travail_else",
+      "question": "Quel est son secteur d'activité ?",
+      "ask": "oui",
+      "depends_on": [
+        {
+          "question": "travail_secteur",
+          "allowed_values": [
+            "Autre"
           ]
         }
       ]
@@ -433,7 +497,7 @@
     },
     {
       "id": "situation_amoureuse_2",
-      "question": "Quel est sa situation amoureuse ?",
+      "question": "Quel est sa situation amoureuse (Adulte) ?",
       "options": [
         "Célibataire",
         "En couple",
