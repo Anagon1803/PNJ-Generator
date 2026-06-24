@@ -2,3 +2,5 @@ pnj_generator
 main.py
 *.txt
 *.drawio
+node_modules/
+dist/
