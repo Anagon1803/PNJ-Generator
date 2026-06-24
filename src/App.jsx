@@ -111,11 +111,11 @@ export default function App() {
     <main className="app-shell">
       <section className="hero">
         <div className="hero-content">
-          <p className="eyebrow">Créateur de personnages</p>
-          <h1>Générateur de PNJ Citadin</h1>
+          <p className="eyebrow">JDR Sociaty EXtinction</p>
+          <h1>Fiches de personnage</h1>
           <p className="intro">
-            Construis un personnage prêt à jouer en avançant question par question,
-            puis exporte sa fiche en fichier texte.
+            Crée une identité prête à entrer dans la ville en avançant question par
+            question, puis exporte sa fiche en fichier texte.
           </p>
         </div>
       </section>
@@ -139,7 +139,7 @@ export default function App() {
           {isFinished ? (
             <div className="result-view">
               <Sparkles aria-hidden="true" />
-              <h2>Ton PNJ est prêt</h2>
+              <h2>Ta fiche est prête</h2>
               <pre>{generatedText}</pre>
               <div className="actions">
                 <button type="button" className="primary-action" onClick={downloadTxt}>
