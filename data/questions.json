@@ -59,6 +59,34 @@
         "Intéressée (5/7)",
         "Pervers (6/7)",
         "Nymphomane (7/7)"
+      ],
+      "depends_on": [
+        {
+          "question": "orientation",
+          "allowed_values": [
+            "Hétéro",
+            "Homo",
+            "Bi",
+            "se cherche"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "libido",
+      "question": "Quel est son niveau de libido ?",
+      "options": [
+        "Désert (1/7)",
+        "PI pas intéressé (2/7)",
+        "Pas prioritaire (3/7)"
+      ],
+      "depends_on": [
+        {
+          "question": "orientation",
+          "allowed_values": [
+            "NOPE"
+          ]
+        }
       ]
     },
     {
