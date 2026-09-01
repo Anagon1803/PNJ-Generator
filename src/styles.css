@@ -58,6 +58,62 @@ button:hover {
   mask-image: linear-gradient(to bottom, black, transparent 72%);
 }
 
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 72px;
+  padding: 12px clamp(16px, 5vw, 64px);
+  border-bottom: 1px solid rgba(255, 71, 196, 0.35);
+  background: rgba(8, 5, 13, 0.82);
+  box-shadow: 0 16px 42px rgba(8, 4, 14, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  position: relative;
+  color: #fff6fc;
+  font-weight: 900;
+  text-decoration: none;
+  text-shadow: 0 0 18px rgba(255, 43, 184, 0.7);
+  white-space: nowrap;
+}
+
+.top-nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid rgba(86, 223, 255, 0.25);
+  background: rgba(86, 223, 255, 0.08);
+  color: #e9fbff;
+  padding: 0 14px;
+  font-weight: 800;
+}
+
+.nav-tab:hover {
+  background: rgba(86, 223, 255, 0.16);
+}
+
+.nav-tab.active {
+  border-color: rgba(255, 102, 210, 0.7);
+  background: linear-gradient(135deg, rgba(255, 45, 184, 0.94), rgba(155, 56, 255, 0.92));
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(255, 45, 184, 0.46);
+}
+
 .hero {
   display: grid;
   min-height: 42vh;
@@ -180,6 +236,101 @@ h2 {
   padding: clamp(24px, 5vw, 48px);
 }
 
+.rules-panel {
+  position: relative;
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0 0 56px;
+}
+
+.rules-document {
+  border: 1px solid rgba(255, 71, 196, 0.48);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(30, 10, 43, 0.96), rgba(12, 7, 22, 0.96));
+  box-shadow:
+    0 0 0 1px rgba(80, 229, 255, 0.12),
+    0 22px 70px rgba(255, 36, 181, 0.2),
+    inset 0 0 28px rgba(255, 48, 189, 0.08);
+  padding: clamp(22px, 5vw, 46px);
+  color: #ffe8f7;
+  line-height: 1.7;
+  backdrop-filter: blur(14px);
+}
+
+.rules-document h1,
+.rules-document h2,
+.rules-document h3 {
+  color: #fff6fc;
+  text-shadow: 0 0 18px rgba(255, 43, 184, 0.5);
+}
+
+.rules-document h1 {
+  max-width: none;
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.rules-document h2 {
+  margin: 34px 0 12px;
+  font-size: clamp(1.45rem, 3vw, 2.35rem);
+}
+
+.rules-document h3 {
+  margin: 26px 0 10px;
+  font-size: 1.18rem;
+}
+
+.rules-document p,
+.rules-document ul,
+.rules-document ol {
+  margin: 0 0 14px;
+  color: #f7bfdf;
+}
+
+.rules-document ul,
+.rules-document ol {
+  padding-left: 22px;
+}
+
+.rules-document li + li {
+  margin-top: 6px;
+}
+
+.rules-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 24px;
+  border: 1px solid rgba(255, 102, 210, 0.32);
+  border-radius: 8px;
+  background: rgba(8, 4, 14, 0.62);
+}
+
+.rules-document table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+}
+
+.rules-document th,
+.rules-document td {
+  border-bottom: 1px solid rgba(255, 102, 210, 0.2);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.rules-document th {
+  color: #ffffff;
+  background: rgba(255, 45, 184, 0.2);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.rules-document tr:last-child td {
+  border-bottom: 0;
+}
+
 form {
   display: grid;
   gap: 22px;
@@ -277,6 +428,16 @@ pre {
 }
 
 @media (max-width: 760px) {
+  .top-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .top-nav nav,
+  .nav-tab {
+    width: 100%;
+  }
+
   .hero {
     min-height: 38vh;
     padding: 32px 16px;
@@ -294,5 +455,13 @@ pre {
 
   .actions button {
     width: 100%;
+  }
+
+  .rules-panel {
+    width: calc(100% - 24px);
+  }
+
+  .rules-document table {
+    min-width: 640px;
   }
 }
