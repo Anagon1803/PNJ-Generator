@@ -1,4 +1,7 @@
-import yaml, json
+import json
+from pathlib import Path
+
+import yaml
 
 def yaml_to_json(yaml_file, json_file):
     with open(yaml_file, "r", encoding="utf-8") as f:
@@ -8,5 +11,6 @@ def yaml_to_json(yaml_file, json_file):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
-    yaml_to_json("questions.yaml", "questions.json")
+    project_root = Path(__file__).resolve().parent.parent
+    yaml_to_json(project_root / "data" / "questions.yaml", project_root / "data" / "questions.json")
     print("Conversion terminée !")

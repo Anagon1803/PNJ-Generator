@@ -1,6 +1,6 @@
 import React from "react";
 import { Download, RotateCcw, Sparkles, Wand2 } from "lucide-react";
-import questionsData from "../questions.json";
+import questionsData from "../data/questions.json";
 
 const questions = questionsData.questions;
 

@@ -1,5 +1,6 @@
 NAME = pnj_generator
 SRC	= main.py
+PYTHON ?= python3
 
 # Colors
 GREEN = /bin/echo -e "\x1b[32m $1\x1b[0m"
@@ -24,12 +25,12 @@ $(NAME): ## Creer l'executable python
 run: ## Lance le serveur pour voir le site
 	@ $(call GREEN, "Lancemant du serveur")
 	@ $(call GREEN, "http://localhost:8000/home.html")
-	python -m http.server
+	$(PYTHON) -m http.server
 	@ $(call GREEN, "Fermeture du serveur")
 
 convert: ## Convertir YAML en JSON
 	@ $(call GREEN, "Conversion du fichier questions.yaml en questions.json")
-	python converti.py
+	$(PYTHON) scripts/converti.py
 	@ $(call GREEN, "Conversion reussit")
 
 clean: ## Supprime le fichier __pycache__

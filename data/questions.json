@@ -1,6 +1,14 @@
 {
   "questions": [
     {
+      "id": "année",
+      "question": "On est en qu'elle année ?",
+      "options": [
+        "2040",
+        "2060"
+      ]
+    },
+    {
       "id": "sexe",
       "question": "Quel est le sexe ?",
       "options": [
